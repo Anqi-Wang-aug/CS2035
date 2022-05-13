@@ -1,0 +1,19 @@
+expsinplot(-3, 5);
+
+function expsinplot(tau, omega)
+    t = linspace(0, 10, 1001);
+    y = 10.*exp(t/tau).*sin(omega*t);
+    figure
+    plot(t,y, 'r')
+    grid on
+    title(['y = ' num2str(10) 'e^{t/' num2str(tau) '}' '*sin(' num2str(omega) '*t)'], 'FontSize',14)
+    xlabel('t', 'FontSize',14)
+    ylabel('y', 'FontSize', 14)
+end
+
+function expsinplots(taus, omegas)
+    m = numel(taus);
+    for i=0:1:m
+    end
+end
+

@@ -1,0 +1,23 @@
+syms x
+f(x) = 2*x.^3-5*x.^2+5*e.^(x/2)+2*cos(4*x);
+
+result = [];
+
+for i = 0:0.01:3
+    result = [result f(i)];
+end
+
+%result'
+%min_y = min(result)
+%[r,c] = find(result==min_y);
+min_x = (c-1)/100
+
+max_y = max(result)
+[r,c] = find(result==max_y);
+max_x = (c-1)/100
+
+%fplot(f,[0 3])
+
+round(f(2.14),5)
+round(f(2.13),5)
+round(f(2.15),5)

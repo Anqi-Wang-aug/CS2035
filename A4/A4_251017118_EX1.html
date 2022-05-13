@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>A4_251017118_EX1</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-04-09"><meta name="DC.source" content="A4_251017118_EX1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">a: meshing</a></li><li><a href="#2">b: numerical integration</a></li><li><a href="#3">c: add x and y label</a></li><li><a href="#4">d: integral</a></li></ul></div><h2 id="1">a: meshing</h2><pre class="codeinput">xs = linspace(-8, 8, 201);
+ys = linspace(-8, 8, 201);
+[X Y] = meshgrid(xs, ys);
+Z1 = 10*sinc(sqrt(X.^2+Y.^2));
+Z2 = 18-3*(sqrt(X.^2+Y.^2)).^(-1)+sin(sqrt(X.^2+Y.^2))+sqrt(200-(X.^2+Y.^2)+10*sin(X)+10*sin(Y))/1000;
+figure
+mesh(X,Y,Z1)
+figure
+mesh(X,Y,Z2)
+</pre><img vspace="5" hspace="5" src="A4_251017118_EX1_01.png" alt=""> <img vspace="5" hspace="5" src="A4_251017118_EX1_02.png" alt=""> <h2 id="2">b: numerical integration</h2><pre class="codeinput">fun1 = @(X,Y) 10*sinc(sqrt(X.^2+Y.^2));
+fun2 = @(X,Y) 18-3*(sqrt(X.^2+Y.^2)).^(-1)+sin(sqrt(X.^2+Y.^2))+sqrt(200-(X.^2+Y.^2)+10*sin(X)+10*sin(Y))/1000;
+xmin = -8;
+xmax = 8;
+ymin = -8;
+ymax = 8;
+num_area1 = integral2(fun1, xmin, xmax, ymin, ymax);
+num_area2 = integral2(fun2, xmin, xmax, ymin, ymax);
+str1 = strcat(<span class="string">'area under the curve = '</span>, string(num_area1));
+str2 = strcat(<span class="string">'area under the curve = '</span>, string(num_area2));
+figure
+mesh(X,Y,Z1)
+t = text(X(4), Y(3),str1, <span class="string">'FontName'</span>, <span class="string">'Times New Roman'</span>, <span class="string">'FontSize'</span>, 14, <span class="string">'Color'</span>, <span class="string">'magenta'</span>);
+figure
+mesh(X,Y,Z2)
+t = text(X(4), Y(3), str2, <span class="string">'FontName'</span>, <span class="string">'Times New Roman'</span>, <span class="string">'FontSize'</span>, 14, <span class="string">'Color'</span>, <span class="string">'magenta'</span>);
+</pre><img vspace="5" hspace="5" src="A4_251017118_EX1_03.png" alt=""> <img vspace="5" hspace="5" src="A4_251017118_EX1_04.png" alt=""> <h2 id="3">c: add x and y label</h2><pre class="codeinput">title1 = <span class="string">'$f_1 = 10\frac{sin(\pi \sqrt{x^2+y^2})}{\pi \sqrt{x^2+y^2}}$'</span>;
+title2 = <span class="string">'$f_2 = 18-\frac{3}{\sqrt{x^2+y^2}}+sin(\sqrt{x^2+y^2})+\frac{\sqrt{200-(x^2+y^2)+10sin(x)+10sin(y)}}{1000}$'</span>;
+figure
+mesh(X,Y,Z1)
+t = text(X(4), Y(3),str1, <span class="string">'FontName'</span>, <span class="string">'Times New Roman'</span>, <span class="string">'FontSize'</span>, 14, <span class="string">'Color'</span>, <span class="string">'magenta'</span>);
+title(title1, <span class="string">'Interpreter'</span>,<span class="string">'latex'</span>, <span class="string">'FontSize'</span>, 14);
+x1 = xlabel(<span class="string">'x'</span>);
+x1.Color = <span class="string">'blue'</span>;
+y1 = ylabel(<span class="string">'y'</span>);
+y1.Color = <span class="string">'green'</span>;
+z1 = zlabel(<span class="string">'z'</span>);
+z1.Color = <span class="string">'red'</span>;
+
+figure
+mesh(X,Y,Z2)
+t = text(X(4), Y(3), str2, <span class="string">'FontName'</span>, <span class="string">'Times New Roman'</span>, <span class="string">'FontSize'</span>, 14, <span class="string">'Color'</span>, <span class="string">'magenta'</span>);
+title(title2, <span class="string">'interpreter'</span>, <span class="string">'latex'</span>, <span class="string">'FontSize'</span>, 14)
+x2 = xlabel(<span class="string">'x'</span>);
+x2.Color = <span class="string">'blue'</span>;
+y2 = ylabel(<span class="string">'y'</span>);
+y2.Color = <span class="string">'green'</span>;
+z2 = zlabel(<span class="string">'z'</span>);
+z2.Color = <span class="string">'red'</span>;
+</pre><img vspace="5" hspace="5" src="A4_251017118_EX1_05.png" alt=""> <img vspace="5" hspace="5" src="A4_251017118_EX1_06.png" alt=""> <h2 id="4">d: integral</h2><pre class="codeinput">syms <span class="string">x</span> <span class="string">y</span>
+f1 =10* sinc ( sqrt ( x ^2+ y ^2));
+sym_area1 = eval(int ( int ( f1 ,y , ymin , ymax ) ,x , xmin , xmax ));
+f2 =18 -3/ sqrt ( x ^2+ y ^2)+ sin ( sqrt ( x ^2+ y ^2))+( sqrt (200 -( x ^2+ y ^2)+10* sin ( x )+10* sin ( y )))/1000;
+sym_area2 = eval ( int ( int ( f2 ,y , ymin , ymax ) ,x , xmin , xmax ));
+sym_area1
+sym_area2
+<span class="comment">% both of them are not integrable because their eval() returns the equation</span>
+</pre><pre class="codeoutput"> 
+sym_area1 =
+ 
+int(int((10*sin(pi*(x^2 + y^2)^(1/2)))/(pi*(x^2 + y^2)^(1/2)), y, -8, 8), x, -8, 8)
+ 
+ 
+sym_area2 =
+ 
+int(int(sin((x^2 + y^2)^(1/2)) - 3/(x^2 + y^2)^(1/2) + (10*sin(x) + 10*sin(y) - x^2 - y^2 + 200)^(1/2)/1000 + 18, y, -8, 8), x, -8, 8)
+ 
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB® R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% a: meshing
+xs = linspace(-8, 8, 201);
+ys = linspace(-8, 8, 201);
+[X Y] = meshgrid(xs, ys);
+Z1 = 10*sinc(sqrt(X.^2+Y.^2));
+Z2 = 18-3*(sqrt(X.^2+Y.^2)).^(-1)+sin(sqrt(X.^2+Y.^2))+sqrt(200-(X.^2+Y.^2)+10*sin(X)+10*sin(Y))/1000;
+figure
+mesh(X,Y,Z1)
+figure
+mesh(X,Y,Z2)
+
+%% b: numerical integration
+fun1 = @(X,Y) 10*sinc(sqrt(X.^2+Y.^2));
+fun2 = @(X,Y) 18-3*(sqrt(X.^2+Y.^2)).^(-1)+sin(sqrt(X.^2+Y.^2))+sqrt(200-(X.^2+Y.^2)+10*sin(X)+10*sin(Y))/1000;
+xmin = -8;
+xmax = 8;
+ymin = -8;
+ymax = 8;
+num_area1 = integral2(fun1, xmin, xmax, ymin, ymax);
+num_area2 = integral2(fun2, xmin, xmax, ymin, ymax);
+str1 = strcat('area under the curve = ', string(num_area1));
+str2 = strcat('area under the curve = ', string(num_area2));
+figure
+mesh(X,Y,Z1)
+t = text(X(4), Y(3),str1, 'FontName', 'Times New Roman', 'FontSize', 14, 'Color', 'magenta');
+figure
+mesh(X,Y,Z2)
+t = text(X(4), Y(3), str2, 'FontName', 'Times New Roman', 'FontSize', 14, 'Color', 'magenta');
+
+%% c: add x and y label
+title1 = '$f_1 = 10\frac{sin(\pi \sqrt{x^2+y^2})}{\pi \sqrt{x^2+y^2}}$';
+title2 = '$f_2 = 18-\frac{3}{\sqrt{x^2+y^2}}+sin(\sqrt{x^2+y^2})+\frac{\sqrt{200-(x^2+y^2)+10sin(x)+10sin(y)}}{1000}$';
+figure
+mesh(X,Y,Z1)
+t = text(X(4), Y(3),str1, 'FontName', 'Times New Roman', 'FontSize', 14, 'Color', 'magenta');
+title(title1, 'Interpreter','latex', 'FontSize', 14);
+x1 = xlabel('x');
+x1.Color = 'blue';
+y1 = ylabel('y');
+y1.Color = 'green';
+z1 = zlabel('z');
+z1.Color = 'red';
+
+figure
+mesh(X,Y,Z2)
+t = text(X(4), Y(3), str2, 'FontName', 'Times New Roman', 'FontSize', 14, 'Color', 'magenta');
+title(title2, 'interpreter', 'latex', 'FontSize', 14)
+x2 = xlabel('x');
+x2.Color = 'blue';
+y2 = ylabel('y');
+y2.Color = 'green';
+z2 = zlabel('z');
+z2.Color = 'red';
+
+%% d: integral
+syms x y
+f1 =10* sinc ( sqrt ( x ^2+ y ^2));
+sym_area1 = eval(int ( int ( f1 ,y , ymin , ymax ) ,x , xmin , xmax ));
+f2 =18 -3/ sqrt ( x ^2+ y ^2)+ sin ( sqrt ( x ^2+ y ^2))+( sqrt (200 -( x ^2+ y ^2)+10* sin ( x )+10* sin ( y )))/1000;
+sym_area2 = eval ( int ( int ( f2 ,y , ymin , ymax ) ,x , xmin , xmax ));
+sym_area1
+sym_area2
+% both of them are not integrable because their eval() returns the equation
+##### SOURCE END #####
+--></body></html>

@@ -1,0 +1,184 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>lab05</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-02-28"><meta name="DC.source" content="lab05.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">graph 01: square root</a></li><li><a href="#2">graph 02: exponential function</a></li><li><a href="#3">graph 03: log10 function</a></li><li><a href="#4">graph 04: log2 function</a></li><li><a href="#5">graph 05: exponential base 10</a></li><li><a href="#6">graph 06: exponential base 2</a></li><li><a href="#7">graph 07: sine</a></li><li><a href="#8">graph 08: cosine</a></li><li><a href="#9">graph 09: tangent</a></li><li><a href="#10">graph 10: cotangent</a></li><li><a href="#11">graph 11: arcsine</a></li><li><a href="#12">graph 12: arccosine</a></li><li><a href="#13">graph 13: arctangent</a></li><li><a href="#14">graph 14: arccotangent</a></li></ul></div><h2 id="1">graph 01: square root</h2><pre class="codeinput">x = [0:0.1:4];
+plot(x,sqrt(x))
+title(<span class="string">'square root'</span>)
+</pre><img vspace="5" hspace="5" src="lab05_01.png" alt=""> <h2 id="2">graph 02: exponential function</h2><pre class="codeinput">x = [-2:0.5:5];
+plot(x, exp(x));
+title(<span class="string">'exponential function'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_02.png" alt=""> <h2 id="3">graph 03: log10 function</h2><pre class="codeinput">x = [0.1:0.1:10];
+plot(x, log10(x));
+title(<span class="string">'log10 function'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_03.png" alt=""> <h2 id="4">graph 04: log2 function</h2><pre class="codeinput">x = [0.1:0.1:10];
+plot(x, log2(x));
+title(<span class="string">'log2 function'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_04.png" alt=""> <h2 id="5">graph 05: exponential base 10</h2><pre class="codeinput">x = [-1:0.1:2];
+plot(x, 10.^x);
+title(<span class="string">'exponential base10'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_05.png" alt=""> <h2 id="6">graph 06: exponential base 2</h2><pre class="codeinput">x = [-1:0.1:2];
+plot(x, 2.^x);
+title(<span class="string">'exponential base2'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_06.png" alt=""> <h2 id="7">graph 07: sine</h2><pre class="codeinput">x = [-2*pi: pi/100: 2*pi];
+plot(x, sin(x));
+title(<span class="string">'sine'</span>)
+</pre><img vspace="5" hspace="5" src="lab05_07.png" alt=""> <h2 id="8">graph 08: cosine</h2><pre class="codeinput">x = [-2*pi: pi/100: 2*pi];
+plot(x, cos(x));
+title(<span class="string">'cosine'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_08.png" alt=""> <h2 id="9">graph 09: tangent</h2><pre class="codeinput">x = [-pi/2+0.01:0.01:pi/2-0.01];
+plot(x, tan(x));
+title(<span class="string">'tangent'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_09.png" alt=""> <h2 id="10">graph 10: cotangent</h2><pre class="codeinput">x = [[-0.8:0.01:-0.01], [0.01:0.01:0.8]];
+plot(x, cot(x));
+title(<span class="string">'cotangent'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_10.png" alt=""> <h2 id="11">graph 11: arcsine</h2><pre class="codeinput">x = [-1:0.01:1];
+plot(x, asin(x));
+title(<span class="string">'arcsine'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_11.png" alt=""> <h2 id="12">graph 12: arccosine</h2><pre class="codeinput">x = [-1:0.01:1];
+plot(x, acos(x));
+title(<span class="string">'arccosine'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_12.png" alt=""> <h2 id="13">graph 13: arctangent</h2><pre class="codeinput">x = [-10:0.01:10];
+plot(x, atan(x));
+title(<span class="string">'arctangent'</span>);
+</pre><img vspace="5" hspace="5" src="lab05_13.png" alt=""> <h2 id="14">graph 14: arccotangent</h2><pre class="codeinput">x = [[-0.8:0.01:-0.01], [0.01:0.01:0.8]];
+plot(x, acot(x));
+title(<span class="string">'arccotangent'</span>)
+</pre><img vspace="5" hspace="5" src="lab05_14.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% graph 01: square root
+x = [0:0.1:4];
+plot(x,sqrt(x))
+title('square root')
+
+%% graph 02: exponential function
+x = [-2:0.5:5];
+plot(x, exp(x));
+title('exponential function');
+
+%% graph 03: log10 function
+x = [0.1:0.1:10];
+plot(x, log10(x));
+title('log10 function');
+
+%% graph 04: log2 function
+x = [0.1:0.1:10];
+plot(x, log2(x));
+title('log2 function');
+
+%% graph 05: exponential base 10
+x = [-1:0.1:2];
+plot(x, 10.^x);
+title('exponential base10');
+
+%% graph 06: exponential base 2
+x = [-1:0.1:2];
+plot(x, 2.^x);
+title('exponential base2');
+
+%% graph 07: sine
+x = [-2*pi: pi/100: 2*pi];
+plot(x, sin(x));
+title('sine')
+
+%% graph 08: cosine
+x = [-2*pi: pi/100: 2*pi];
+plot(x, cos(x));
+title('cosine');
+
+%% graph 09: tangent
+x = [-pi/2+0.01:0.01:pi/2-0.01];
+plot(x, tan(x));
+title('tangent');
+
+%% graph 10: cotangent
+x = [[-0.8:0.01:-0.01], [0.01:0.01:0.8]];
+plot(x, cot(x));
+title('cotangent');
+
+%% graph 11: arcsine
+x = [-1:0.01:1];
+plot(x, asin(x));
+title('arcsine');
+
+%% graph 12: arccosine
+x = [-1:0.01:1];
+plot(x, acos(x));
+title('arccosine');
+
+%% graph 13: arctangent
+x = [-10:0.01:10];
+plot(x, atan(x));
+title('arctangent');
+
+%% graph 14: arccotangent
+x = [[-0.8:0.01:-0.01], [0.01:0.01:0.8]];
+plot(x, acot(x));
+title('arccotangent')
+##### SOURCE END #####
+--></body></html>

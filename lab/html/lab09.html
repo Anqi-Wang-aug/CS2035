@@ -1,0 +1,165 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>lab09</title><meta name="generator" content="MATLAB 9.11"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2022-04-16"><meta name="DC.source" content="lab09.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><pre class="codeinput">set1 = load(<span class="string">'lab09dataset1.mat'</span>);
+set2 = load(<span class="string">'lab09dataset2.mat'</span>);
+
+mx1 = mean(set1.x);
+my1 = mean(set1.y);
+mx2 = mean(set2.x);
+my2 = mean(set2.y);
+
+stdx1 = std(set1.x);
+stdy1 = std(set1.y);
+stdx2 = std(single(set2.x));
+stdy2 = std(single(set2.y));
+
+skx1 = skewness(set1.x);
+sky1 = skewness(set1.y);
+skx2 = skewness(set2.x);
+sky2 = skewness(set2.y);
+
+kux1 = kurtosis(set1.x);
+kuy1 = kurtosis(set1.y);
+kux2 = kurtosis(set2.x);
+kuy2 = kurtosis(set2.y);
+
+strx1 = {strcat(<span class="string">'x mean = '</span>, string(mx1)), strcat(<span class="string">'x std = '</span>, string(stdx1)), strcat(<span class="string">'x skewness = '</span>, string(skx1)), strcat(<span class="string">'x kurtosis = '</span>, string(kux1))};
+stry1 = {strcat(<span class="string">'y mean = '</span>, string(my1)), strcat(<span class="string">'y std = '</span>, string(stdy1)), strcat(<span class="string">'y skewness = '</span>, string(sky1)) , strcat(<span class="string">'y kurtosis = '</span>, string(kuy1))};
+strx2 = {strcat(<span class="string">'x mean = '</span>, string(mx2)), strcat(<span class="string">'x std = '</span>, string(stdx2)), strcat(<span class="string">'x skewness = '</span>, string(skx2)), strcat(<span class="string">'x kurtosis = '</span>, string(kux2))};
+stry2 = {strcat(<span class="string">'y mean = '</span>, string(my2)), strcat(<span class="string">'y std = '</span>, string(stdy2)), strcat(<span class="string">'y skewness = '</span>, string(sky2)) , strcat(<span class="string">'y kurtosis = '</span>, string(kuy2))};
+
+figure
+plot(set1.x, set1.y, <span class="string">'*'</span>)
+text(set1.x(3),set1.y(3)+10, strx1);
+text(set1.x(10), set1.y(10)-5, stry1);
+
+figure
+plot(set2.x, set2.y, <span class="string">'*'</span>)
+text(-20, -15, strx2)
+text(15, 20, stry2)
+
+figure
+hist(set1.x, 18);
+figure
+hist(set1.y, 18);
+figure
+hist(single(set2.x), 18);
+figure
+hist(single(set2.y), 18);
+</pre><img vspace="5" hspace="5" src="lab09_01.png" alt=""> <img vspace="5" hspace="5" src="lab09_02.png" alt=""> <img vspace="5" hspace="5" src="lab09_03.png" alt=""> <img vspace="5" hspace="5" src="lab09_04.png" alt=""> <img vspace="5" hspace="5" src="lab09_05.png" alt=""> <img vspace="5" hspace="5" src="lab09_06.png" alt=""> <p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+set1 = load('lab09dataset1.mat');
+set2 = load('lab09dataset2.mat');
+
+mx1 = mean(set1.x);
+my1 = mean(set1.y);
+mx2 = mean(set2.x);
+my2 = mean(set2.y);
+
+stdx1 = std(set1.x);
+stdy1 = std(set1.y);
+stdx2 = std(single(set2.x));
+stdy2 = std(single(set2.y));
+
+skx1 = skewness(set1.x);
+sky1 = skewness(set1.y);
+skx2 = skewness(set2.x);
+sky2 = skewness(set2.y);
+
+kux1 = kurtosis(set1.x);
+kuy1 = kurtosis(set1.y);
+kux2 = kurtosis(set2.x);
+kuy2 = kurtosis(set2.y);
+
+strx1 = {strcat('x mean = ', string(mx1)), strcat('x std = ', string(stdx1)), strcat('x skewness = ', string(skx1)), strcat('x kurtosis = ', string(kux1))};
+stry1 = {strcat('y mean = ', string(my1)), strcat('y std = ', string(stdy1)), strcat('y skewness = ', string(sky1)) , strcat('y kurtosis = ', string(kuy1))};
+strx2 = {strcat('x mean = ', string(mx2)), strcat('x std = ', string(stdx2)), strcat('x skewness = ', string(skx2)), strcat('x kurtosis = ', string(kux2))};
+stry2 = {strcat('y mean = ', string(my2)), strcat('y std = ', string(stdy2)), strcat('y skewness = ', string(sky2)) , strcat('y kurtosis = ', string(kuy2))};
+
+figure
+plot(set1.x, set1.y, '*')
+text(set1.x(3),set1.y(3)+10, strx1);
+text(set1.x(10), set1.y(10)-5, stry1);
+
+figure
+plot(set2.x, set2.y, '*')
+text(-20, -15, strx2)
+text(15, 20, stry2)
+
+figure
+hist(set1.x, 18);
+figure
+hist(set1.y, 18);
+figure
+hist(single(set2.x), 18);
+figure
+hist(single(set2.y), 18);
+##### SOURCE END #####
+--></body></html>
